@@ -1,0 +1,122 @@
+{
+	"name": "pipelineDelete",
+	"properties": {
+		"activities": [
+			{
+				"name": "Get Metadata1",
+				"type": "GetMetadata",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "metadataDataSet",
+						"type": "DatasetReference"
+					},
+					"fieldList": [
+						"childItems"
+					],
+					"storeSettings": {
+						"type": "AzureBlobFSReadSettings",
+						"recursive": true,
+						"modifiedDatetimeStart": {
+							"value": "@addminutes(utcnow(),-120)",
+							"type": "Expression"
+						},
+						"modifiedDatetimeEnd": {
+							"value": "@addminutes(utcnow(),-90)",
+							"type": "Expression"
+						},
+						"enablePartitionDiscovery": false
+					},
+					"formatSettings": {
+						"type": "DelimitedTextReadSettings"
+					}
+				}
+			},
+			{
+				"name": "ForEach1",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "Get Metadata1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Get Metadata1').output.childItems",
+						"type": "Expression"
+					},
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "Delete2",
+							"type": "Delete",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"dataset": {
+									"referenceName": "outputDataSet_P",
+									"type": "DatasetReference",
+									"parameters": {
+										"pFileName": {
+											"value": "@item().name",
+											"type": "Expression"
+										}
+									}
+								},
+								"logStorageSettings": {
+									"linkedServiceName": {
+										"referenceName": "ADLS_LinkedService",
+										"type": "LinkedServiceReference"
+									},
+									"path": "container-de-aslam/Logs"
+								},
+								"enableLogging": true,
+								"storeSettings": {
+									"type": "AzureBlobFSReadSettings",
+									"recursive": false,
+									"enablePartitionDiscovery": false
+								}
+							}
+						}
+					]
+				}
+			}
+		],
+		"parameters": {
+			"pFileSystem": {
+				"type": "String",
+				"defaultValue": "container-de-aslam"
+			},
+			"pDirectory": {
+				"type": "String",
+				"defaultValue": "hana_config"
+			},
+			"pFileName": {
+				"type": "String",
+				"defaultValue": "hana_config.txt"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2021-09-19T12:44:28Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

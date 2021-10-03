@@ -1,0 +1,17 @@
+{
+	"name": "LinkedService_MAC",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "FileServer",
+		"typeProperties": {
+			"host": "C:\\data\\SourceData",
+			"userId": "Mohammed Aslam",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiIzYWNiODU1YS05YzRkLTQ0MTYtYjg5NS0yYzAyMDY5YWY1ZDkiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "integrationRuntimeMAC",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

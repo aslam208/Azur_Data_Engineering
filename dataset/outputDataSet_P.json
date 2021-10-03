@@ -1,0 +1,28 @@
+{
+	"name": "outputDataSet_P",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ADLS_LinkedService",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"pFileName": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().pFileName",
+					"type": "Expression"
+				},
+				"folderPath": "output",
+				"fileSystem": "container-de-aslam"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

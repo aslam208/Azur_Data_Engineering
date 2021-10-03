@@ -1,0 +1,22 @@
+{
+	"name": "DataSet_cvs",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LinkedService_MAC",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "FileServerLocation",
+				"fileName": "EmployeeLocal.csv"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

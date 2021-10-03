@@ -1,0 +1,38 @@
+{
+	"name": "sinkDataSet_P_Parquet",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ADLS_LinkedService",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"sinkFilePath": {
+				"type": "String"
+			},
+			"sinkDirectory": {
+				"type": "String"
+			},
+			"sinkFileName": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": {
+					"value": "@dataset().sinkFilePath",
+					"type": "Expression"
+				},
+				"fileSystem": {
+					"value": "@dataset().sinkFilePath",
+					"type": "Expression"
+				}
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

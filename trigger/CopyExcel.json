@@ -1,0 +1,35 @@
+{
+	"name": "CopyExcel",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "pipeline2",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"vFilePath": "C:\\data\\",
+					"vUserName": "Mohammed Aslam",
+					"srcDirectory": "SourceData",
+					"srcFileName": "Financial Sample.xlsx",
+					"srcSheetName": "Sheet1",
+					"sinkFilePath": "container-de-aslam",
+					"sinkFileName": "Financials",
+					"sinkDirectory": "out\\Parquet"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Month",
+				"interval": 14,
+				"startTime": "2021-09-10T15:35:00Z",
+				"endTime": "2021-09-11T16:28:33Z",
+				"timeZone": "UTC"
+			}
+		}
+	}
+}

@@ -1,0 +1,125 @@
+{
+	"name": "pipeline2",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "ExcelSource",
+						"storeSettings": {
+							"type": "FileServerReadSettings",
+							"recursive": false,
+							"enablePartitionDiscovery": false
+						}
+					},
+					"sink": {
+						"type": "ParquetSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "ParquetWriteSettings"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "scrDataSet_P_Excel",
+						"type": "DatasetReference",
+						"parameters": {
+							"vFilePath": {
+								"value": "@pipeline().parameters.vFilePath",
+								"type": "Expression"
+							},
+							"vUserName": {
+								"value": "@pipeline().parameters.vUserName",
+								"type": "Expression"
+							},
+							"srcDirectory": {
+								"value": "@pipeline().parameters.srcDirectory",
+								"type": "Expression"
+							},
+							"srcFileName": {
+								"value": "@pipeline().parameters.srcFileName",
+								"type": "Expression"
+							},
+							"srcSheetName": {
+								"value": "@pipeline().parameters.srcSheetName",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "sinkDataSet_P_Parquet",
+						"type": "DatasetReference",
+						"parameters": {
+							"sinkFilePath": {
+								"value": "@pipeline().parameters.sinkFilePath",
+								"type": "Expression"
+							},
+							"sinkDirectory": {
+								"value": "@pipeline().parameters.sinkDirectory",
+								"type": "Expression"
+							},
+							"sinkFileName": {
+								"value": "@pipeline().parameters.sinkFileName",
+								"type": "Expression"
+							}
+						}
+					}
+				]
+			}
+		],
+		"parameters": {
+			"vFilePath": {
+				"type": "String"
+			},
+			"vUserName": {
+				"type": "String"
+			},
+			"srcDirectory": {
+				"type": "String"
+			},
+			"srcFileName": {
+				"type": "String"
+			},
+			"srcSheetName": {
+				"type": "String"
+			},
+			"sinkFilePath": {
+				"type": "String"
+			},
+			"sinkFileName": {
+				"type": "String"
+			},
+			"sinkDirectory": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2021-09-10T15:41:10Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

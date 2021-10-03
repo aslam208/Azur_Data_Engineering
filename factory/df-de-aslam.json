@@ -1,0 +1,9 @@
+{
+	"name": "df-de-aslam",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "fcec4dac-60f5-487c-87f3-4d216f94bcbd",
+		"tenantId": "c0fd3ae2-36a1-4275-8d28-6bbf18450ba1"
+	}
+}

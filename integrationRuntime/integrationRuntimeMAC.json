@@ -1,0 +1,7 @@
+{
+	"name": "integrationRuntimeMAC",
+	"properties": {
+		"type": "SelfHosted",
+		"description": "Installed on MAC"
+	}
+}

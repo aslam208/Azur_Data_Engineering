@@ -1,0 +1,40 @@
+{
+	"name": "srcDataSet_P_csv",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ADLS_LinkedService",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"pFileSystem": {
+				"type": "String"
+			},
+			"pDirectory": {
+				"type": "String"
+			},
+			"pFileName": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().pFileName",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@dataset().pDirectory",
+					"type": "Expression"
+				},
+				"fileSystem": {
+					"value": "@dataset().pFileSystem",
+					"type": "Expression"
+				}
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
