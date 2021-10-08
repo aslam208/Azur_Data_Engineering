@@ -6,78 +6,6 @@
 			"type": "string",
 			"metadata": "Data Factory name",
 			"defaultValue": "df-de-aslam"
-		},
-		"ADLS_LinkedService_accountKey": {
-			"type": "secureString",
-			"metadata": "Secure string for 'accountKey' of 'ADLS_LinkedService'"
-		},
-		"LinkedService_MAC_password": {
-			"type": "secureString",
-			"metadata": "Secure string for 'password' of 'LinkedService_MAC'"
-		},
-		"LinkedService_P_SelfHosted_password": {
-			"type": "secureString",
-			"metadata": "Secure string for 'password' of 'LinkedService_P_SelfHosted'"
-		},
-		"az_blobstorage_link_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'az_blobstorage_link'"
-		},
-		"az_sqldatabase_link_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'az_sqldatabase_link'"
-		},
-		"ADLS_LinkedService_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://sadeaslam.dfs.core.windows.net"
-		},
-		"LinkedService_MAC_properties_typeProperties_host": {
-			"type": "string",
-			"defaultValue": "C:\\data\\SourceData"
-		},
-		"LinkedService_MAC_properties_typeProperties_userId": {
-			"type": "string",
-			"defaultValue": "Mohammed Aslam"
-		},
-		"LinkedService_P_SelfHosted_properties_typeProperties_host": {
-			"type": "string",
-			"defaultValue": "@{linkedService().vFilePath}"
-		},
-		"LinkedService_P_SelfHosted_properties_typeProperties_userId": {
-			"type": "string",
-			"defaultValue": "@{linkedService().vUserName}"
-		},
-		"CopyExcel_properties_pipeline2_parameters_vFilePath": {
-			"type": "string",
-			"defaultValue": "C:\\data\\"
-		},
-		"CopyExcel_properties_pipeline2_parameters_vUserName": {
-			"type": "string",
-			"defaultValue": "Mohammed Aslam"
-		},
-		"CopyExcel_properties_pipeline2_parameters_srcDirectory": {
-			"type": "string",
-			"defaultValue": "SourceData"
-		},
-		"CopyExcel_properties_pipeline2_parameters_srcFileName": {
-			"type": "string",
-			"defaultValue": "Financial Sample.xlsx"
-		},
-		"CopyExcel_properties_pipeline2_parameters_srcSheetName": {
-			"type": "string",
-			"defaultValue": "Sheet1"
-		},
-		"CopyExcel_properties_pipeline2_parameters_sinkFilePath": {
-			"type": "string",
-			"defaultValue": "container-de-aslam"
-		},
-		"CopyExcel_properties_pipeline2_parameters_sinkFileName": {
-			"type": "string",
-			"defaultValue": "Financials"
-		},
-		"CopyExcel_properties_pipeline2_parameters_sinkDirectory": {
-			"type": "string",
-			"defaultValue": "out\\Parquet"
 		}
 	},
 	"variables": {
@@ -105,15 +33,8 @@
 						"typeProperties": {
 							"dataflow": {
 								"referenceName": "dataflow1",
-								"type": "DataFlowReference",
-								"parameters": {},
-								"datasetParameters": {
-									"sourceInput": {},
-									"sourceInputData": {},
-									"sink1": {}
-								}
+								"type": "DataFlowReference"
 							},
-							"staging": {},
 							"compute": {
 								"coreCount": 8,
 								"computeType": "General"
@@ -122,10 +43,6 @@
 						}
 					}
 				],
-				"policy": {
-					"elapsedTimeMetric": {},
-					"cancelAfter": {}
-				},
 				"annotations": [],
 				"lastPublishTime": "2021-09-19T10:27:03Z"
 			},
@@ -222,23 +139,17 @@
 						"inputs": [
 							{
 								"referenceName": "datasetEmployee",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						],
 						"outputs": [
 							{
 								"referenceName": "Target_Dataset_Employee",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						]
 					}
 				],
-				"policy": {
-					"elapsedTimeMetric": {},
-					"cancelAfter": {}
-				},
 				"annotations": [],
 				"lastPublishTime": "2021-09-06T11:20:04Z"
 			},
@@ -301,23 +212,17 @@
 						"inputs": [
 							{
 								"referenceName": "DataSet_cvs",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						],
 						"outputs": [
 							{
 								"referenceName": "Target_Dataset_Employee",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						]
 					}
 				],
-				"policy": {
-					"elapsedTimeMetric": {},
-					"cancelAfter": {}
-				},
 				"annotations": [],
 				"lastPublishTime": "2021-09-06T19:11:20Z"
 			},
@@ -422,10 +327,6 @@
 						]
 					}
 				],
-				"policy": {
-					"elapsedTimeMetric": {},
-					"cancelAfter": {}
-				},
 				"parameters": {
 					"vFilePath": {
 						"type": "String"
@@ -510,23 +411,17 @@
 						"inputs": [
 							{
 								"referenceName": "az_blob_input_datasource",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						],
 						"outputs": [
 							{
 								"referenceName": "az_sql_db_dataset",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						]
 					}
 				],
-				"policy": {
-					"elapsedTimeMetric": {},
-					"cancelAfter": {}
-				},
 				"annotations": []
 			},
 			"dependsOn": [
@@ -555,8 +450,7 @@
 						"typeProperties": {
 							"dataset": {
 								"referenceName": "metadataDataSet",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							},
 							"fieldList": [
 								"childItems"
@@ -640,10 +534,6 @@
 						}
 					}
 				],
-				"policy": {
-					"elapsedTimeMetric": {},
-					"cancelAfter": {}
-				},
 				"parameters": {
 					"pFileSystem": {
 						"type": "String",
@@ -898,10 +788,6 @@
 						}
 					}
 				],
-				"policy": {
-					"elapsedTimeMetric": {},
-					"cancelAfter": {}
-				},
 				"variables": {
 					"vFileName": {
 						"type": "String"
@@ -939,14 +825,8 @@
 						"typeProperties": {
 							"dataflow": {
 								"referenceName": "dataflow2",
-								"type": "DataFlowReference",
-								"parameters": {},
-								"datasetParameters": {
-									"source1": {},
-									"sink1": {}
-								}
+								"type": "DataFlowReference"
 							},
-							"staging": {},
 							"compute": {
 								"coreCount": 8,
 								"computeType": "General"
@@ -955,10 +835,6 @@
 						}
 					}
 				],
-				"policy": {
-					"elapsedTimeMetric": {},
-					"cancelAfter": {}
-				},
 				"annotations": [],
 				"lastPublishTime": "2021-09-20T18:30:40Z"
 			},
@@ -982,10 +858,6 @@
 						}
 					}
 				],
-				"policy": {
-					"elapsedTimeMetric": {},
-					"cancelAfter": {}
-				},
 				"annotations": []
 			},
 			"dependsOn": []
@@ -1112,9 +984,7 @@
 				},
 				"schema": []
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/az_blobstorage_link')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/az_sql_db_dataset')]",
@@ -1133,9 +1003,7 @@
 					"table": "Employees"
 				}
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/az_sqldatabase_link')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/datasetEmployee')]",
@@ -1613,10 +1481,10 @@
 				"annotations": [],
 				"type": "AzureBlobFS",
 				"typeProperties": {
-					"url": "[parameters('ADLS_LinkedService_properties_typeProperties_url')]",
+					"url": "https://sadeaslam.dfs.core.windows.net",
 					"accountKey": {
 						"type": "SecureString",
-						"value": "[parameters('ADLS_LinkedService_accountKey')]"
+						"value": "**********"
 					}
 				}
 			},
@@ -1630,11 +1498,11 @@
 				"annotations": [],
 				"type": "FileServer",
 				"typeProperties": {
-					"host": "[parameters('LinkedService_MAC_properties_typeProperties_host')]",
-					"userId": "[parameters('LinkedService_MAC_properties_typeProperties_userId')]",
+					"host": "C:\\data\\SourceData",
+					"userId": "Mohammed Aslam",
 					"password": {
 						"type": "SecureString",
-						"value": "[parameters('LinkedService_MAC_password')]"
+						"value": "**********"
 					}
 				},
 				"connectVia": {
@@ -1642,9 +1510,7 @@
 					"type": "IntegrationRuntimeReference"
 				}
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/integrationRuntimes/integrationRuntimeMAC')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/LinkedService_P_SelfHosted')]",
@@ -1662,44 +1528,16 @@
 				"annotations": [],
 				"type": "FileServer",
 				"typeProperties": {
-					"host": "[parameters('LinkedService_P_SelfHosted_properties_typeProperties_host')]",
-					"userId": "[parameters('LinkedService_P_SelfHosted_properties_typeProperties_userId')]",
+					"host": "@{linkedService().vFilePath}",
+					"userId": "@{linkedService().vUserName}",
 					"password": {
 						"type": "SecureString",
-						"value": "[parameters('LinkedService_P_SelfHosted_password')]"
+						"value": "**********"
 					}
 				},
 				"connectVia": {
 					"referenceName": "integrationRuntimeMAC",
 					"type": "IntegrationRuntimeReference"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/integrationRuntimes/integrationRuntimeMAC')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/az_blobstorage_link')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureBlobStorage",
-				"typeProperties": {
-					"connectionString": "[parameters('az_blobstorage_link_connectionString')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/az_sqldatabase_link')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureSqlDatabase",
-				"typeProperties": {
-					"connectionString": "[parameters('az_sqldatabase_link_connectionString')]"
 				}
 			},
 			"dependsOn": []
@@ -1718,14 +1556,14 @@
 							"type": "PipelineReference"
 						},
 						"parameters": {
-							"vFilePath": "[parameters('CopyExcel_properties_pipeline2_parameters_vFilePath')]",
-							"vUserName": "[parameters('CopyExcel_properties_pipeline2_parameters_vUserName')]",
-							"srcDirectory": "[parameters('CopyExcel_properties_pipeline2_parameters_srcDirectory')]",
-							"srcFileName": "[parameters('CopyExcel_properties_pipeline2_parameters_srcFileName')]",
-							"srcSheetName": "[parameters('CopyExcel_properties_pipeline2_parameters_srcSheetName')]",
-							"sinkFilePath": "[parameters('CopyExcel_properties_pipeline2_parameters_sinkFilePath')]",
-							"sinkFileName": "[parameters('CopyExcel_properties_pipeline2_parameters_sinkFileName')]",
-							"sinkDirectory": "[parameters('CopyExcel_properties_pipeline2_parameters_sinkDirectory')]"
+							"vFilePath": "C:\\data\\",
+							"vUserName": "Mohammed Aslam",
+							"srcDirectory": "SourceData",
+							"srcFileName": "Financial Sample.xlsx",
+							"srcSheetName": "Sheet1",
+							"sinkFilePath": "container-de-aslam",
+							"sinkFileName": "Financials",
+							"sinkDirectory": "out\\Parquet"
 						}
 					}
 				],
@@ -1743,17 +1581,6 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/pipelines/pipeline2')]"
 			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/integrationRuntimeMAC')]",
-			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"type": "SelfHosted",
-				"description": "Installed on MAC",
-				"typeProperties": {}
-			},
-			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/dataflow1')]",

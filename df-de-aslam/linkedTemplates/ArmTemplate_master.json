@@ -19,6 +19,14 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'LinkedService_P_SelfHosted'"
 		},
+		"az_blobstorage_link_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'az_blobstorage_link'"
+		},
+		"az_sqldatabase_link_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'az_sqldatabase_link'"
+		},
 		"ADLS_LinkedService_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://sadeaslam.dfs.core.windows.net"
@@ -101,11 +109,14 @@
 					"ADLS_LinkedService_accountKey": {
 						"value": "[parameters('ADLS_LinkedService_accountKey')]"
 					},
+					"az_blobstorage_link_connectionString": {
+						"value": "[parameters('az_blobstorage_link_connectionString')]"
+					},
+					"az_sqldatabase_link_connectionString": {
+						"value": "[parameters('az_sqldatabase_link_connectionString')]"
+					},
 					"LinkedService_MAC_password": {
 						"value": "[parameters('LinkedService_MAC_password')]"
-					},
-					"LinkedService_P_SelfHosted_password": {
-						"value": "[parameters('LinkedService_P_SelfHosted_password')]"
 					},
 					"ADLS_LinkedService_properties_typeProperties_url": {
 						"value": "[parameters('ADLS_LinkedService_properties_typeProperties_url')]"
@@ -115,12 +126,6 @@
 					},
 					"LinkedService_MAC_properties_typeProperties_userId": {
 						"value": "[parameters('LinkedService_MAC_properties_typeProperties_userId')]"
-					},
-					"LinkedService_P_SelfHosted_properties_typeProperties_host": {
-						"value": "[parameters('LinkedService_P_SelfHosted_properties_typeProperties_host')]"
-					},
-					"LinkedService_P_SelfHosted_properties_typeProperties_userId": {
-						"value": "[parameters('LinkedService_P_SelfHosted_properties_typeProperties_userId')]"
 					}
 				}
 			},
@@ -139,6 +144,15 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
+					},
+					"LinkedService_P_SelfHosted_password": {
+						"value": "[parameters('LinkedService_P_SelfHosted_password')]"
+					},
+					"LinkedService_P_SelfHosted_properties_typeProperties_host": {
+						"value": "[parameters('LinkedService_P_SelfHosted_properties_typeProperties_host')]"
+					},
+					"LinkedService_P_SelfHosted_properties_typeProperties_userId": {
+						"value": "[parameters('LinkedService_P_SelfHosted_properties_typeProperties_userId')]"
 					},
 					"CopyExcel_properties_pipeline2_parameters_vFilePath": {
 						"value": "[parameters('CopyExcel_properties_pipeline2_parameters_vFilePath')]"

@@ -14,6 +14,12 @@
 		"LinkedService_P_SelfHosted_password": {
 			"value": ""
 		},
+		"az_blobstorage_link_connectionString": {
+			"value": ""
+		},
+		"az_sqldatabase_link_connectionString": {
+			"value": ""
+		},
 		"ADLS_LinkedService_properties_typeProperties_url": {
 			"value": "https://sadeaslam.dfs.core.windows.net"
 		},
