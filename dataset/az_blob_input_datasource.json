@@ -1,0 +1,22 @@
+{
+	"name": "az_blob_input_datasource",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "az_blobstorage_link",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "input",
+				"container": "container-de-aslam"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
