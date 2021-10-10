@@ -1,5 +1,5 @@
 {
-	"name": "pipeline3",
+	"name": "copy_from_azure_mac",
 	"properties": {
 		"activities": [
 			{
@@ -29,7 +29,7 @@
 						}
 					},
 					"sink": {
-						"type": "AzureSqlSink",
+						"type": "SqlServerSink",
 						"tableOption": "autoCreate",
 						"disableMetricsCollection": false
 					},
@@ -51,7 +51,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "az_sql_db_dataset",
+						"referenceName": "Employee_sql_mac",
 						"type": "DatasetReference"
 					}
 				]

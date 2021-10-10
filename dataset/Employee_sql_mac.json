@@ -1,0 +1,16 @@
+{
+	"name": "Employee_sql_mac",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LinkedService_SQL_MAC",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Employee"
+		}
+	}
+}
