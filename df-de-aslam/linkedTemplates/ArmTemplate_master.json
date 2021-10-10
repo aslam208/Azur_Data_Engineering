@@ -19,6 +19,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'LinkedService_P_SelfHosted'"
 		},
+		"LinkedService_SQL_MAC_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'LinkedService_SQL_MAC'"
+		},
 		"az_blobstorage_link_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'az_blobstorage_link'"
@@ -147,6 +151,9 @@
 					},
 					"LinkedService_P_SelfHosted_password": {
 						"value": "[parameters('LinkedService_P_SelfHosted_password')]"
+					},
+					"LinkedService_SQL_MAC_connectionString": {
+						"value": "[parameters('LinkedService_SQL_MAC_connectionString')]"
 					},
 					"LinkedService_P_SelfHosted_properties_typeProperties_host": {
 						"value": "[parameters('LinkedService_P_SelfHosted_properties_typeProperties_host')]"

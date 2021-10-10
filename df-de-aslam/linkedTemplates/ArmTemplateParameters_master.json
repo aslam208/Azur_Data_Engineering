@@ -14,6 +14,9 @@
 		"LinkedService_P_SelfHosted_password": {
 			"value": ""
 		},
+		"LinkedService_SQL_MAC_connectionString": {
+			"value": ""
+		},
 		"az_blobstorage_link_connectionString": {
 			"value": ""
 		},
