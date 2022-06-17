@@ -12,5 +12,6 @@
 			"schema": "dbo",
 			"table": "Employees"
 		}
-	}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
 }
