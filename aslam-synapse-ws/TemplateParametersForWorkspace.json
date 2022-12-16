@@ -5,6 +5,12 @@
 		"workspaceName": {
 			"value": "aslam-synapse-ws"
 		},
+		"AzureSqlDatabase1_connectionString": {
+			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=aslam-synapse-ws.database.windows.net;Initial Catalog=aslam_synapse_dp"
+		},
+		"SqlServer1_connectionString": {
+			"value": ""
+		},
 		"aslam-synapse-ws-WorkspaceDefaultSqlServer_connectionString": {
 			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:aslam-synapse-ws.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
 		},
