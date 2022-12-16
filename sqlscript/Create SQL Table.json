@@ -2,7 +2,7 @@
 	"name": "Create SQL Table",
 	"properties": {
 		"content": {
-			"query": "Create Table Employee(Id int, Name VARCHAR(50),Department VARCHAR(20))\n\nselect * from Employee;",
+			"query": "Create Table Employee(Id int, Name VARCHAR(50),Department VARCHAR(20))\n\nselect * from Employee;\n\nALTER table Employee\nadd NewName VARCHAR(50)\n",
 			"metadata": {
 				"language": "sql"
 			},
