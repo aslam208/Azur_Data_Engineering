@@ -69,7 +69,8 @@
 				"     preCommands: [],",
 				"     postCommands: [],",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> sink1",
+				"     skipDuplicateMapOutputs: true,",
+				"     saveOrder: 1) ~> sink1",
 				"source2 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
@@ -84,6 +85,7 @@
 				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
+				"     saveOrder: 2,",
 				"     errorHandlingOption: 'stopOnFirstError') ~> sink2"
 			]
 		}
