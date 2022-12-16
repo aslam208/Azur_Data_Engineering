@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Data flow2",
+				"name": "Data flow1",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [],
 				"policy": {
@@ -16,14 +16,19 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "TO_DWH",
-						"type": "DataFlowReference"
+						"referenceName": "ADLS_ADLS",
+						"type": "DataFlowReference",
+						"datasetParameters": {
+							"source1": {
+								"INPUT_FOLTER": "input"
+							}
+						}
 					},
 					"compute": {
-						"coreCount": 16,
+						"coreCount": 8,
 						"computeType": "General"
 					},
-					"traceLevel": "Coarse"
+					"traceLevel": "Fine"
 				}
 			}
 		],
