@@ -1,0 +1,17 @@
+{
+	"name": "Create SQL Table",
+	"properties": {
+		"content": {
+			"query": "Create Table Employee(Id int, Name VARCHAR(50),Department VARCHAR(20))\n\nselect * from Employee;",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "aslam_synapse_dp",
+				"poolName": "aslam_synapse_dp"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
