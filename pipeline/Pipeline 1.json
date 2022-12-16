@@ -3,45 +3,9 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Data flow1",
-				"type": "ExecuteDataFlow",
-				"dependsOn": [],
-				"policy": {
-					"timeout": "0.12:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"dataflow": {
-						"referenceName": "ADLS_ADLS",
-						"type": "DataFlowReference",
-						"datasetParameters": {
-							"source1": {
-								"INPUT_FOLTER": "input"
-							}
-						}
-					},
-					"compute": {
-						"coreCount": 8,
-						"computeType": "General"
-					},
-					"traceLevel": "Fine"
-				}
-			},
-			{
 				"name": "Data flow2",
 				"type": "ExecuteDataFlow",
-				"dependsOn": [
-					{
-						"activity": "Data flow1",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
@@ -56,10 +20,10 @@
 						"type": "DataFlowReference"
 					},
 					"compute": {
-						"coreCount": 8,
+						"coreCount": 16,
 						"computeType": "General"
 					},
-					"traceLevel": "Fine"
+					"traceLevel": "Coarse"
 				}
 			}
 		],

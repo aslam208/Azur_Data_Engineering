@@ -20,6 +20,10 @@
 			{
 				"name": "Department",
 				"type": "varchar"
+			},
+			{
+				"name": "NewName",
+				"type": "varchar"
 			}
 		],
 		"typeProperties": {
