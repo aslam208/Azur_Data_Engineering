@@ -1,9 +1,15 @@
 {
-	"name": "DS_EPLOYEE",
+	"name": "DS_CSV",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "aslam-synapse-ws-WorkspaceDefaultStorage",
 			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"INPUT_FOLTER": {
+				"type": "String",
+				"defaultValue": "input"
+			}
 		},
 		"annotations": [],
 		"type": "DelimitedText",
@@ -11,12 +17,14 @@
 			"location": {
 				"type": "AzureBlobFSLocation",
 				"fileName": "Employee.csv",
-				"folderPath": "output",
+				"folderPath": {
+					"value": "@dataset().INPUT_FOLTER",
+					"type": "Expression"
+				},
 				"fileSystem": "synapse-fs"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
-			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
 		"schema": [
