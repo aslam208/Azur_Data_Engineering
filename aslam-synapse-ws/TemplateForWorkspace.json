@@ -60,10 +60,10 @@
 							},
 							"staging": {},
 							"compute": {
-								"coreCount": 8,
+								"coreCount": 16,
 								"computeType": "General"
 							},
-							"traceLevel": "Fine"
+							"traceLevel": "Coarse"
 						}
 					}
 				],
@@ -101,6 +101,10 @@
 					},
 					{
 						"name": "Department",
+						"type": "varchar"
+					},
+					{
+						"name": "NewName",
 						"type": "varchar"
 					}
 				],
@@ -545,7 +549,8 @@
 						"     input(",
 						"          Id as integer,",
 						"          Name as string,",
-						"          Department as string",
+						"          Department as string,",
+						"          NewName as string",
 						"     ),",
 						"     deletable:false,",
 						"     insertable:true,",
@@ -599,12 +604,13 @@
 						"     allowSchemaDrift: true,",
 						"     validateSchema: false,",
 						"     ignoreNoFilesFound: false) ~> source1",
-						"source1 sink(allowSchemaDrift: true,",
+						"source1 sink(allowSchemaDrift: false,",
 						"     validateSchema: false,",
 						"     input(",
 						"          Id as integer,",
 						"          Name as string,",
-						"          Department as string",
+						"          Department as string,",
+						"          NewName as string",
 						"     ),",
 						"     stagingSchemaName: 'dbo',",
 						"     deletable:false,",
