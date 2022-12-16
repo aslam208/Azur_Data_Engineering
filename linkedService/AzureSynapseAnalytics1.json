@@ -1,0 +1,20 @@
+{
+	"name": "AzureSynapseAnalytics1",
+	"properties": {
+		"parameters": {
+			"DbName": {
+				"type": "string",
+				"defaultValue": "aslam_synapse_dp"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlDW",
+		"typeProperties": {
+			"connectionString": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=aslam-synapse-ws.sql.azuresynapse.net;Initial Catalog=aslam_synapse_dp"
+		},
+		"connectVia": {
+			"referenceName": "AutoResolveIntegrationRuntime",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
