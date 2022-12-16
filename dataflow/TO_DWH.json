@@ -38,6 +38,7 @@
 				"          Name as string,",
 				"          Department as string",
 				"     ),",
+				"     stagingSchemaName: 'dbo',",
 				"     deletable:false,",
 				"     insertable:true,",
 				"     updateable:false,",
