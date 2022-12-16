@@ -4,7 +4,7 @@
 		"annotations": [],
 		"type": "AzureSqlDatabase",
 		"typeProperties": {
-			"connectionString": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=aslam-synapse-ws.database.windows.net;Initial Catalog=master"
+			"connectionString": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=aslam-synapse-ws.database.windows.net;Initial Catalog=aslam_synapse_dp"
 		},
 		"connectVia": {
 			"referenceName": "AutoResolveIntegrationRuntime",
