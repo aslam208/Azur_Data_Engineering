@@ -1,5 +1,5 @@
 {
-	"name": "TO_DWH",
+	"name": "ADLS_TO_DWH",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
