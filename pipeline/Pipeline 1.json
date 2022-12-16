@@ -17,7 +17,21 @@
 				"typeProperties": {
 					"dataflow": {
 						"referenceName": "TO_DWH",
-						"type": "DataFlowReference"
+						"type": "DataFlowReference",
+						"linkedServiceParameters": {
+							"sinkStream": {
+								"linkedService": {
+									"DbName": "aslam_synapse_dp"
+								}
+							}
+						}
+					},
+					"staging": {
+						"linkedService": {
+							"referenceName": "aslam-synapse-ws-WorkspaceDefaultStorage",
+							"type": "LinkedServiceReference"
+						},
+						"folderPath": "synapse-fs/staging"
 					},
 					"compute": {
 						"coreCount": 8,
