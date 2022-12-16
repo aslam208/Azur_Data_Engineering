@@ -16,13 +16,8 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "ADLS_ADLS",
-						"type": "DataFlowReference",
-						"datasetParameters": {
-							"source1": {
-								"INPUT_FOLTER": "input"
-							}
-						}
+						"referenceName": "TO_DWH",
+						"type": "DataFlowReference"
 					},
 					"compute": {
 						"coreCount": 8,
