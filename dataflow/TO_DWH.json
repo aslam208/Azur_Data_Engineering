@@ -14,11 +14,11 @@
 			],
 			"sinks": [
 				{
-					"dataset": {
-						"referenceName": "AzureSqlTable1",
-						"type": "DatasetReference"
+					"linkedService": {
+						"referenceName": "AzureSynapseAnalytics1",
+						"type": "LinkedServiceReference"
 					},
-					"name": "sink1"
+					"name": "sinkStream"
 				}
 			],
 			"transformations": [],
@@ -41,14 +41,16 @@
 				"          Department as string,",
 				"          NewName as string",
 				"     ),",
-				"     stagingSchemaName: 'dbo',",
-				"     deletable:false,",
-				"     insertable:true,",
-				"     updateable:false,",
-				"     upsertable:false,",
 				"     format: 'table',",
-				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true,",
+				"     store: 'synapseanalytics',",
+				"     schemaName: 'dbo',",
+				"     tableName: 'Employee',",
+				"     insertable: true,",
+				"     updateable: false,",
+				"     deletable: false,",
+				"     upsertable: false,",
+				"     allowCopyCommand: true,",
+				"     staged: true,",
 				"     saveOrder: 1,",
 				"     errorHandlingOption: 'stopOnFirstError',",
 				"     mapColumn(",
@@ -56,7 +58,7 @@
 				"          Name,",
 				"          Department,",
 				"          NewName",
-				"     )) ~> sink1"
+				"     )) ~> sinkStream"
 			]
 		}
 	}
