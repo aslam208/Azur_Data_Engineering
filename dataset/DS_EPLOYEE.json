@@ -10,7 +10,6 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "Employee.csv",
 				"folderPath": "output",
 				"fileSystem": "synapse-fs"
 			},
