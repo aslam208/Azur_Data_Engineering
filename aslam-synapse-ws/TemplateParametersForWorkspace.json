@@ -8,6 +8,9 @@
 		"AzureSqlDatabase1_connectionString": {
 			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=aslam-synapse-ws.database.windows.net;Initial Catalog=aslam_synapse_dp"
 		},
+		"AzureSynapseAnalytics1_connectionString": {
+			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=aslam-synapse-ws.sql.azuresynapse.net;Initial Catalog=aslam_synapse_dp"
+		},
 		"SqlServer1_connectionString": {
 			"value": ""
 		},
