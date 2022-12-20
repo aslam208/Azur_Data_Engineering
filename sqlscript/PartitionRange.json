@@ -1,0 +1,17 @@
+{
+	"name": "PartitionRange",
+	"properties": {
+		"content": {
+			"query": "SELECT \nt.name AS TableName, \ni.name AS IndexName, \np.partition_number,\np.partition_id,\nf.type_desc,\nc.name AS PartitioningColumnName,\nCONVERT(nvarchar(255), r.value) as boundary\nFROM sys.tables AS t\nJOIN sys.indexes AS i\n    ON t.object_id = i.object_id\nJOIN sys.partitions AS p\n    ON i.object_id = p.object_id AND i.index_id = p.index_id\nJOIN  sys.partition_schemes AS s\n    ON i.data_space_id = s.data_space_id\nJOIN sys.partition_functions AS f\n    ON s.function_id = f.function_id\nLEFT JOIN sys.partition_range_values AS r\n    ON f.function_id = r.function_id and r.boundary_id = p.partition_number\nJOIN sys.index_columns AS ic\n    ON ic.object_id = i.object_id\n    AND ic.index_id = i.index_id AND ic.partition_ordinal > 0\nJOIN sys.columns AS c\n    ON t.object_id = c.object_id\nWHERE t.name = 'FactInternetSales'\n    AND c.column_id = ic.column_id\nORDER BY p.partition_number;",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "aslam_synapse_dp",
+				"poolName": "aslam_synapse_dp"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
