@@ -2,7 +2,7 @@
 	"name": "Create SQL Table",
 	"properties": {
 		"content": {
-			"query": "Create Table Employee(Id int, Name VARCHAR(50),Department VARCHAR(20))\n\nselect * from Employee;\n\nALTER table Employee\nadd NewName VARCHAR(50)\n",
+			"query": "Create Table Employee(Id int, Name VARCHAR(50),Department VARCHAR(20))\n\nselect * from Employee;\n\nALTER table Employee\nadd NewName VARCHAR(50)\n\n\nselect * from sys.partitions where object_id=object_id('Employee2')\n\n\nSELECT * FROM Employee2\n",
 			"metadata": {
 				"language": "sql"
 			},
