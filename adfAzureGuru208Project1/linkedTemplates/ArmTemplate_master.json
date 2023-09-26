@@ -1,0 +1,216 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "adfAzureGuru208Project1"
+		},
+		"ADLS_LinkedService_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ADLS_LinkedService'"
+		},
+		"LS_AzureDataLakeStorage_Pproject1_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_AzureDataLakeStorage_Pproject1'"
+		},
+		"LinkedService_MAC_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LinkedService_MAC'"
+		},
+		"LinkedService_P_SelfHosted_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LinkedService_P_SelfHosted'"
+		},
+		"LinkedService_SQL_MAC_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'LinkedService_SQL_MAC'"
+		},
+		"az_blobstorage_link_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'az_blobstorage_link'"
+		},
+		"az_sqldatabase_link_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'az_sqldatabase_link'"
+		},
+		"ADLS_LinkedService_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://sadeaslam.dfs.core.windows.net"
+		},
+		"LS_AzureDataLakeStorage_Pproject1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://saazureguru208.dfs.core.windows.net/"
+		},
+		"LS_HttpServer_GitHub_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://github.com/aslam208/data/raw/main/"
+		},
+		"LinkedService_MAC_properties_typeProperties_host": {
+			"type": "string",
+			"defaultValue": "C:\\data\\SourceData"
+		},
+		"LinkedService_MAC_properties_typeProperties_userId": {
+			"type": "string",
+			"defaultValue": "Mohammed Aslam"
+		},
+		"LinkedService_P_SelfHosted_properties_typeProperties_host": {
+			"type": "string",
+			"defaultValue": "@{linkedService().vFilePath}"
+		},
+		"LinkedService_P_SelfHosted_properties_typeProperties_userId": {
+			"type": "string",
+			"defaultValue": "@{linkedService().vUserName}"
+		},
+		"CopyExcel_properties_pipeline2_parameters_vFilePath": {
+			"type": "string",
+			"defaultValue": "C:\\data\\"
+		},
+		"CopyExcel_properties_pipeline2_parameters_vUserName": {
+			"type": "string",
+			"defaultValue": "Mohammed Aslam"
+		},
+		"CopyExcel_properties_pipeline2_parameters_srcDirectory": {
+			"type": "string",
+			"defaultValue": "SourceData"
+		},
+		"CopyExcel_properties_pipeline2_parameters_srcFileName": {
+			"type": "string",
+			"defaultValue": "Financial Sample.xlsx"
+		},
+		"CopyExcel_properties_pipeline2_parameters_srcSheetName": {
+			"type": "string",
+			"defaultValue": "Sheet1"
+		},
+		"CopyExcel_properties_pipeline2_parameters_sinkFilePath": {
+			"type": "string",
+			"defaultValue": "container-de-aslam"
+		},
+		"CopyExcel_properties_pipeline2_parameters_sinkFileName": {
+			"type": "string",
+			"defaultValue": "Financials"
+		},
+		"CopyExcel_properties_pipeline2_parameters_sinkDirectory": {
+			"type": "string",
+			"defaultValue": "out\\Parquet"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "adfAzureGuru208Project1_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"ADLS_LinkedService_accountKey": {
+						"value": "[parameters('ADLS_LinkedService_accountKey')]"
+					},
+					"LS_AzureDataLakeStorage_Pproject1_accountKey": {
+						"value": "[parameters('LS_AzureDataLakeStorage_Pproject1_accountKey')]"
+					},
+					"az_blobstorage_link_connectionString": {
+						"value": "[parameters('az_blobstorage_link_connectionString')]"
+					},
+					"az_sqldatabase_link_connectionString": {
+						"value": "[parameters('az_sqldatabase_link_connectionString')]"
+					},
+					"ADLS_LinkedService_properties_typeProperties_url": {
+						"value": "[parameters('ADLS_LinkedService_properties_typeProperties_url')]"
+					},
+					"LS_AzureDataLakeStorage_Pproject1_properties_typeProperties_url": {
+						"value": "[parameters('LS_AzureDataLakeStorage_Pproject1_properties_typeProperties_url')]"
+					},
+					"LS_HttpServer_GitHub_properties_typeProperties_url": {
+						"value": "[parameters('LS_HttpServer_GitHub_properties_typeProperties_url')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "adfAzureGuru208Project1_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"LinkedService_MAC_password": {
+						"value": "[parameters('LinkedService_MAC_password')]"
+					},
+					"LinkedService_P_SelfHosted_password": {
+						"value": "[parameters('LinkedService_P_SelfHosted_password')]"
+					},
+					"LinkedService_SQL_MAC_connectionString": {
+						"value": "[parameters('LinkedService_SQL_MAC_connectionString')]"
+					},
+					"LinkedService_MAC_properties_typeProperties_host": {
+						"value": "[parameters('LinkedService_MAC_properties_typeProperties_host')]"
+					},
+					"LinkedService_MAC_properties_typeProperties_userId": {
+						"value": "[parameters('LinkedService_MAC_properties_typeProperties_userId')]"
+					},
+					"LinkedService_P_SelfHosted_properties_typeProperties_host": {
+						"value": "[parameters('LinkedService_P_SelfHosted_properties_typeProperties_host')]"
+					},
+					"LinkedService_P_SelfHosted_properties_typeProperties_userId": {
+						"value": "[parameters('LinkedService_P_SelfHosted_properties_typeProperties_userId')]"
+					},
+					"CopyExcel_properties_pipeline2_parameters_vFilePath": {
+						"value": "[parameters('CopyExcel_properties_pipeline2_parameters_vFilePath')]"
+					},
+					"CopyExcel_properties_pipeline2_parameters_vUserName": {
+						"value": "[parameters('CopyExcel_properties_pipeline2_parameters_vUserName')]"
+					},
+					"CopyExcel_properties_pipeline2_parameters_srcDirectory": {
+						"value": "[parameters('CopyExcel_properties_pipeline2_parameters_srcDirectory')]"
+					},
+					"CopyExcel_properties_pipeline2_parameters_srcFileName": {
+						"value": "[parameters('CopyExcel_properties_pipeline2_parameters_srcFileName')]"
+					},
+					"CopyExcel_properties_pipeline2_parameters_srcSheetName": {
+						"value": "[parameters('CopyExcel_properties_pipeline2_parameters_srcSheetName')]"
+					},
+					"CopyExcel_properties_pipeline2_parameters_sinkFilePath": {
+						"value": "[parameters('CopyExcel_properties_pipeline2_parameters_sinkFilePath')]"
+					},
+					"CopyExcel_properties_pipeline2_parameters_sinkFileName": {
+						"value": "[parameters('CopyExcel_properties_pipeline2_parameters_sinkFileName')]"
+					},
+					"CopyExcel_properties_pipeline2_parameters_sinkDirectory": {
+						"value": "[parameters('CopyExcel_properties_pipeline2_parameters_sinkDirectory')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'adfAzureGuru208Project1_ArmTemplate_0')]"
+			]
+		}
+	]
+}

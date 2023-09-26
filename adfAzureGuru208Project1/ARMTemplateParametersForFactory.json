@@ -1,0 +1,75 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adfAzureGuru208Project1"
+		},
+		"ADLS_LinkedService_accountKey": {
+			"value": ""
+		},
+		"LS_AzureDataLakeStorage_Pproject1_accountKey": {
+			"value": ""
+		},
+		"LinkedService_MAC_password": {
+			"value": ""
+		},
+		"LinkedService_P_SelfHosted_password": {
+			"value": ""
+		},
+		"LinkedService_SQL_MAC_connectionString": {
+			"value": ""
+		},
+		"az_blobstorage_link_connectionString": {
+			"value": ""
+		},
+		"az_sqldatabase_link_connectionString": {
+			"value": ""
+		},
+		"ADLS_LinkedService_properties_typeProperties_url": {
+			"value": "https://sadeaslam.dfs.core.windows.net"
+		},
+		"LS_AzureDataLakeStorage_Pproject1_properties_typeProperties_url": {
+			"value": "https://saazureguru208.dfs.core.windows.net/"
+		},
+		"LS_HttpServer_GitHub_properties_typeProperties_url": {
+			"value": "https://github.com/aslam208/data/raw/main/"
+		},
+		"LinkedService_MAC_properties_typeProperties_host": {
+			"value": "C:\\data\\SourceData"
+		},
+		"LinkedService_MAC_properties_typeProperties_userId": {
+			"value": "Mohammed Aslam"
+		},
+		"LinkedService_P_SelfHosted_properties_typeProperties_host": {
+			"value": "@{linkedService().vFilePath}"
+		},
+		"LinkedService_P_SelfHosted_properties_typeProperties_userId": {
+			"value": "@{linkedService().vUserName}"
+		},
+		"CopyExcel_properties_pipeline2_parameters_vFilePath": {
+			"value": "C:\\data\\"
+		},
+		"CopyExcel_properties_pipeline2_parameters_vUserName": {
+			"value": "Mohammed Aslam"
+		},
+		"CopyExcel_properties_pipeline2_parameters_srcDirectory": {
+			"value": "SourceData"
+		},
+		"CopyExcel_properties_pipeline2_parameters_srcFileName": {
+			"value": "Financial Sample.xlsx"
+		},
+		"CopyExcel_properties_pipeline2_parameters_srcSheetName": {
+			"value": "Sheet1"
+		},
+		"CopyExcel_properties_pipeline2_parameters_sinkFilePath": {
+			"value": "container-de-aslam"
+		},
+		"CopyExcel_properties_pipeline2_parameters_sinkFileName": {
+			"value": "Financials"
+		},
+		"CopyExcel_properties_pipeline2_parameters_sinkDirectory": {
+			"value": "out\\Parquet"
+		}
+	}
+}
