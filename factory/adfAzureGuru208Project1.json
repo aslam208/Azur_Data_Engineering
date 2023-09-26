@@ -1,0 +1,9 @@
+{
+	"name": "adfAzureGuru208Project1",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "86d4aa54-5c8f-4c1d-9488-567f1a848c65",
+		"tenantId": "deec0ee2-2e81-4272-b5de-776a9849ab89"
+	}
+}

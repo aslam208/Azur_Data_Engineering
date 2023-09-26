@@ -1,0 +1,14 @@
+{
+	"name": "LS_HttpServer_GitHub",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"description": "HTTP linked service to connect GitHub repository",
+		"annotations": [],
+		"type": "HttpServer",
+		"typeProperties": {
+			"url": "https://github.com/aslam208/data/raw/main/",
+			"enableServerCertificateValidation": false,
+			"authenticationType": "Anonymous"
+		}
+	}
+}
