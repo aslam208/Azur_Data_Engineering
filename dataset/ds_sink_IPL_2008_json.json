@@ -1,0 +1,20 @@
+{
+	"name": "ds_sink_IPL_2008_json",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_AzureDataLakeStorage_Pproject1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "ipl_2008.json",
+				"folderPath": "bronze",
+				"fileSystem": "project1"
+			}
+		},
+		"schema": {}
+	}
+}
