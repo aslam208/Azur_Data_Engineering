@@ -1,5 +1,11 @@
 {
 	"name": "adfAzureGuru208Project1",
+	"properties": {
+		"globalConfigurations": {
+			"factoryStagingLSReferenceName": "LS_AzureDataLakeStorage_Pproject1",
+			"factoryStagingLSType": "LinkedServiceReference"
+		}
+	},
 	"location": "centralindia",
 	"identity": {
 		"type": "SystemAssigned",
