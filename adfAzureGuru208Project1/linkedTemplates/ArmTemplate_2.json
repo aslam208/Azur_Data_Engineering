@@ -1,0 +1,86 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "adfAzureGuru208Project1"
+		},
+		"CopyExcel_properties_pipeline2_parameters_vFilePath": {
+			"type": "string",
+			"defaultValue": "C:\\data\\"
+		},
+		"CopyExcel_properties_pipeline2_parameters_vUserName": {
+			"type": "string",
+			"defaultValue": "Mohammed Aslam"
+		},
+		"CopyExcel_properties_pipeline2_parameters_srcDirectory": {
+			"type": "string",
+			"defaultValue": "SourceData"
+		},
+		"CopyExcel_properties_pipeline2_parameters_srcFileName": {
+			"type": "string",
+			"defaultValue": "Financial Sample.xlsx"
+		},
+		"CopyExcel_properties_pipeline2_parameters_srcSheetName": {
+			"type": "string",
+			"defaultValue": "Sheet1"
+		},
+		"CopyExcel_properties_pipeline2_parameters_sinkFilePath": {
+			"type": "string",
+			"defaultValue": "container-de-aslam"
+		},
+		"CopyExcel_properties_pipeline2_parameters_sinkFileName": {
+			"type": "string",
+			"defaultValue": "Financials"
+		},
+		"CopyExcel_properties_pipeline2_parameters_sinkDirectory": {
+			"type": "string",
+			"defaultValue": "out\\Parquet"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/CopyExcel')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Stopped",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "pipeline2",
+							"type": "PipelineReference"
+						},
+						"parameters": {
+							"vFilePath": "[parameters('CopyExcel_properties_pipeline2_parameters_vFilePath')]",
+							"vUserName": "[parameters('CopyExcel_properties_pipeline2_parameters_vUserName')]",
+							"srcDirectory": "[parameters('CopyExcel_properties_pipeline2_parameters_srcDirectory')]",
+							"srcFileName": "[parameters('CopyExcel_properties_pipeline2_parameters_srcFileName')]",
+							"srcSheetName": "[parameters('CopyExcel_properties_pipeline2_parameters_srcSheetName')]",
+							"sinkFilePath": "[parameters('CopyExcel_properties_pipeline2_parameters_sinkFilePath')]",
+							"sinkFileName": "[parameters('CopyExcel_properties_pipeline2_parameters_sinkFileName')]",
+							"sinkDirectory": "[parameters('CopyExcel_properties_pipeline2_parameters_sinkDirectory')]"
+						}
+					}
+				],
+				"type": "ScheduleTrigger",
+				"typeProperties": {
+					"recurrence": {
+						"frequency": "Month",
+						"interval": 14,
+						"startTime": "2021-09-10T15:35:00Z",
+						"endTime": "2021-09-11T16:28:33Z",
+						"timeZone": "UTC"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}

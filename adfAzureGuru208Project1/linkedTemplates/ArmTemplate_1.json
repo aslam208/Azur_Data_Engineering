@@ -34,44 +34,48 @@
 		"LinkedService_P_SelfHosted_properties_typeProperties_userId": {
 			"type": "string",
 			"defaultValue": "@{linkedService().vUserName}"
-		},
-		"CopyExcel_properties_pipeline2_parameters_vFilePath": {
-			"type": "string",
-			"defaultValue": "C:\\data\\"
-		},
-		"CopyExcel_properties_pipeline2_parameters_vUserName": {
-			"type": "string",
-			"defaultValue": "Mohammed Aslam"
-		},
-		"CopyExcel_properties_pipeline2_parameters_srcDirectory": {
-			"type": "string",
-			"defaultValue": "SourceData"
-		},
-		"CopyExcel_properties_pipeline2_parameters_srcFileName": {
-			"type": "string",
-			"defaultValue": "Financial Sample.xlsx"
-		},
-		"CopyExcel_properties_pipeline2_parameters_srcSheetName": {
-			"type": "string",
-			"defaultValue": "Sheet1"
-		},
-		"CopyExcel_properties_pipeline2_parameters_sinkFilePath": {
-			"type": "string",
-			"defaultValue": "container-de-aslam"
-		},
-		"CopyExcel_properties_pipeline2_parameters_sinkFileName": {
-			"type": "string",
-			"defaultValue": "Financials"
-		},
-		"CopyExcel_properties_pipeline2_parameters_sinkDirectory": {
-			"type": "string",
-			"defaultValue": "out\\Parquet"
 		}
 	},
 	"variables": {
 		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
 	},
 	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/srcDataSetBinary')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ADLS_LinkedService",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"pDirectory": {
+						"type": "String"
+					},
+					"pFileName": {
+						"type": "String"
+					}
+				},
+				"annotations": [],
+				"type": "Binary",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": {
+							"value": "@dataset().pFileName",
+							"type": "Expression"
+						},
+						"folderPath": {
+							"value": "@dataset().pDirectory",
+							"type": "Expression"
+						},
+						"fileSystem": "container-de-aslam"
+					}
+				}
+			},
+			"dependsOn": []
+		},
 		{
 			"name": "[concat(parameters('factoryName'), '/srcDataSet_P_csv')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
@@ -180,6 +184,54 @@
 					"referenceName": "integrationRuntimeMAC",
 					"type": "IntegrationRuntimeReference"
 				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ds_src_IPL2016_csv')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LS_HttpServer_GitHub",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "HttpServerLocation",
+						"relativeUrl": "ipl_2008.csv"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ds_sink_IPL_2008_json')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LS_AzureDataLakeStorage_Pproject1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "ipl_2008.json",
+						"folderPath": "bronze",
+						"fileSystem": "project1"
+					}
+				},
+				"schema": {}
 			},
 			"dependsOn": []
 		},
@@ -673,7 +725,9 @@
 				"annotations": [],
 				"lastPublishTime": "2021-10-08T19:59:33Z"
 			},
-			"dependsOn": []
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/srcDataSetBinary')]"
+			]
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/DataSet_cvs')]",
@@ -1262,46 +1316,6 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/dataflows/dataflow2')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/CopyExcel')]",
-			"type": "Microsoft.DataFactory/factories/triggers",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"runtimeState": "Stopped",
-				"pipelines": [
-					{
-						"pipelineReference": {
-							"referenceName": "pipeline2",
-							"type": "PipelineReference"
-						},
-						"parameters": {
-							"vFilePath": "[parameters('CopyExcel_properties_pipeline2_parameters_vFilePath')]",
-							"vUserName": "[parameters('CopyExcel_properties_pipeline2_parameters_vUserName')]",
-							"srcDirectory": "[parameters('CopyExcel_properties_pipeline2_parameters_srcDirectory')]",
-							"srcFileName": "[parameters('CopyExcel_properties_pipeline2_parameters_srcFileName')]",
-							"srcSheetName": "[parameters('CopyExcel_properties_pipeline2_parameters_srcSheetName')]",
-							"sinkFilePath": "[parameters('CopyExcel_properties_pipeline2_parameters_sinkFilePath')]",
-							"sinkFileName": "[parameters('CopyExcel_properties_pipeline2_parameters_sinkFileName')]",
-							"sinkDirectory": "[parameters('CopyExcel_properties_pipeline2_parameters_sinkDirectory')]"
-						}
-					}
-				],
-				"type": "ScheduleTrigger",
-				"typeProperties": {
-					"recurrence": {
-						"frequency": "Month",
-						"interval": 14,
-						"startTime": "2021-09-10T15:35:00Z",
-						"endTime": "2021-09-11T16:28:33Z",
-						"timeZone": "UTC"
-					}
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/pipeline2')]"
 			]
 		}
 	]
