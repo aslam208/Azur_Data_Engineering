@@ -1,0 +1,22 @@
+{
+	"name": "ds_src_IPL2016_csv",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_HttpServer_GitHub",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation",
+				"relativeUrl": "ipl_2008.csv"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
