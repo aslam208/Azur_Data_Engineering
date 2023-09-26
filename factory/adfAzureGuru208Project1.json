@@ -4,7 +4,7 @@
 		"globalConfigurations": {
 			"factoryStagingLSReferenceName": "LS_AzureDataLakeStorage_Pproject1",
 			"factoryStagingLSType": "LinkedServiceReference",
-			"factoryStagingFolderPath": "project1"
+			"factoryStagingFolderPath": "project1/bronze"
 		}
 	},
 	"location": "centralindia",
